@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AndyPedia</string>
+    <string name="action_find_on_page">Find in Page</string>
+    <string name="action_share">Share</string>
+    <string name="share_using">Share using</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="search">Search</string>
+    <string name="search_hint">Search Wikipedia</string>
+    <string name="loading">Loading</string>
+    <string name="refresh">Refresh</string>
+    <string name="offline">You appear to be offline.</string>
+    <string name="settings_description">Wikipedia articles</string>
+
+</resources>

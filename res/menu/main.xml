@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:com.brianco.andypedia="http://schemas.android.com/apk/res-auto" >
+    
+    <item android:id="@+id/search_old"
+          android:title="@string/search"
+          android:icon="@drawable/ic_action_search"
+          com.brianco.andypedia:showAsAction="always|collapseActionView" />
+    
+    <item android:id="@+id/search"
+          android:title="@string/search"
+          android:icon="@drawable/ic_action_search"
+          android:actionProviderClass="android.support.v7.widget.ShareActionProvider"
+          com.brianco.andypedia:showAsAction="always|collapseActionView"
+          com.brianco.andypedia:actionViewClass="android.support.v7.widget.SearchView" />
+    
+    <item
+        android:id="@+id/action_find_on_page"
+        android:orderInCategory="1"
+        android:showAsAction="never"
+        android:title="@string/action_find_on_page"/>
+    
+    <item
+        android:id="@+id/action_share"
+        android:orderInCategory="2"
+        android:showAsAction="never"
+        android:title="@string/action_share"/>
+
+</menu>

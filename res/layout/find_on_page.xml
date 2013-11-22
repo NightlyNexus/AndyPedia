@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="?attr/actionButtonStyle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:layout_gravity="fill_horizontal" >
+		
+        <EditText
+            android:id="@+id/search_in_page"
+            android:layout_width="match_parent"
+            android:layout_marginRight="144dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:singleLine="true" />
+		
+        <ImageButton
+            android:id="@+id/cancel_find"
+        	android:layout_alignParentRight="true"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="right|center_vertical"
+            android:src="@drawable/ic_action_accept"
+            android:background="@drawable/button_sel" />
+        
+        <ImageButton
+            android:id="@+id/find_next"
+        	android:layout_toLeftOf="@id/cancel_find"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="right|center_vertical"
+            android:src="@drawable/ic_action_next"
+            android:background="@drawable/button_sel" />
+        
+        <ImageButton
+            android:id="@+id/find_previous"
+        	android:layout_toLeftOf="@id/find_next"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="right|center_vertical"
+            android:src="@drawable/ic_action_previous"
+            android:background="@drawable/button_sel" />
+		
+</RelativeLayout>

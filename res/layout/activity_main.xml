@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:id="@+id/relative_layout" >
+
+    <!-- <TextView
+    	android:id="@+id/loading_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_world"
+        android:visibility="invisible" /> -->
+    
+    <ProgressBar
+    	android:id="@+id/loading_view"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:visibility="invisible"
+        android:layout_centerInParent="true" />
+    
+    <WebView
+    	android:id="@+id/webview"
+    	android:layout_width="match_parent"
+    	android:layout_height="match_parent" />
+    
+    <RelativeLayout
+    	android:id="@+id/refresh_page"
+    	android:visibility="invisible"
+        android:layout_centerInParent="true"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" >
+    
+	    <Button
+    		android:id="@+id/refresh_button"
+	    	android:text="@string/refresh"
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+        	android:layout_centerInParent="true"
+	        android:onClick="refreshPage" />
+        
+        <TextView
+            android:layout_above="@id/refresh_button"
+        	android:layout_centerInParent="true"
+        	android:layout_height="wrap_content"
+        	android:layout_width="wrap_content"
+        	android:text="@string/offline"
+        	android:textSize="@dimen/offline_text_size" />
+	    
+    </RelativeLayout>
+
+</RelativeLayout>
