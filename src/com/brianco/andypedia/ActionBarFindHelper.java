@@ -21,6 +21,7 @@ class ActionBarFindHelper implements TextWatcher {
 	private MainActivity mActivity;
 	private EditText mEditText;
 	private boolean finderOpen = false;
+	private View v;
 	
 	private View.OnClickListener mFindNextListener = new View.OnClickListener() {
         public void onClick(View v) {
@@ -77,15 +78,15 @@ class ActionBarFindHelper implements TextWatcher {
 		mActionBar = activity.getSupportActionBar();
 	}
 	
+	@SuppressLint("NewApi")
 	public void getView(){
 		mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 		mWebView.setFocusable(false);//to prevent awkwardness
 		finderOpen = true;
-		
-		findAll(null);
+
 		LayoutInflater inflator = (LayoutInflater) mActivity
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View v = inflator.inflate(R.layout.find_on_page, null);
+		v = inflator.inflate(R.layout.find_on_page, null);
 		(v.findViewById(R.id.cancel_find)).setOnClickListener(mFindCancelListener);
 		(v.findViewById(R.id.find_previous)).setOnClickListener(mFindPreviousListener);
 		(v.findViewById(R.id.find_next)).setOnClickListener(mFindNextListener);
@@ -103,24 +104,46 @@ class ActionBarFindHelper implements TextWatcher {
                 return false;
             }
         });
-		
+		findAll(null);
+
 		mActionBar.setCustomView(v);
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+			mWebView.setFindListener(new WebView.FindListener() {
+				@Override
+				public void onFindResultReceived(int activeMatchOrdinal,
+						int numberOfMatches, boolean isDoneCounting) {
+					checkMatchNumber(numberOfMatches);
+				}
+			});
+		}
 	}
-	
+
 	@SuppressLint("NewApi")
 	@SuppressWarnings("deprecation")
 	private void findAll(String str){
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
 			mWebView.findAllAsync(str);
 		} else{
-			mWebView.findAll(str);
+			checkMatchNumber(mWebView.findAll(str));
 		}
 	}
-	
+
+	private void checkMatchNumber(int numberOfMatches) {
+		View background = v.findViewById(R.id.background_action_bar);
+		if(mEditText.getText().toString().length() > 0 && numberOfMatches == 0) {
+			background.setBackgroundColor(
+					mActivity.getResources().getColor(R.color.not_found_red));
+		} else {
+			background.setBackgroundColor(
+					mActivity.getResources().getColor(android.R.color.white));
+		}
+	}
+
 	public boolean isFinderOpen(){
 		return finderOpen;
 	}
-	
+
 	private void showKeyboard(){
 		mEditText.postDelayed(new Runnable() {
             @Override
